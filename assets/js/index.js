@@ -4,6 +4,16 @@ const popSound = () => {
   audio.play();
 }
 
+const changeSoundImage = () => {
+  const image = document.getElementById("sound-image");
+
+  image.src = "./images/sound.png";
+
+  setTimeout(() => {
+    image.src = "./images/noSound.png";
+  }, 500);
+}
+
 const drawElement = (domElement, elementToDraw) => {
   domElement.innerHTML = elementToDraw;
 }
@@ -21,13 +31,15 @@ const renderElements = (elementToRender, count) => {
 const handleClickOnBubble = (event) => {
   const bubble = event.target;
 
+  popSound();
+  changeSoundImage();
+
   bubble.onclick = "";
   bubble.src = "./images/explodedBubble.jpg"
-  popSound();
 }
 
-window.onload = () => {
-  const bubbleCount = 1000;
+const setup = () => {
+  const bubbleCount = 100;
   const bubble =
     `<img
       src="./images/bubble.jpg"
@@ -35,7 +47,9 @@ window.onload = () => {
       alt="click me"
       onclick="handleClickOnBubble(event)"
     >`;
-  const container = document.getElementById("container");
+  const bubbleContainer = document.getElementById("bubble-container");
 
-  drawElement(container, renderElements(bubble, bubbleCount));
+  drawElement(bubbleContainer, renderElements(bubble, bubbleCount));
 }
+
+window.onload = setup;

@@ -14,8 +14,16 @@
 
 <body>
   <div class="main">
-    <h1 class="title">Bubble Wrap Sim</h1>
-    <div id="container"></div>
+    <img src="./images/noSound.png" id="sound-image" alt="">
+    <div class="container">
+      <h1 class="title">Bubble Wrap Sim</h1>
+
+      <div id="bubble-container"></div>
+
+      <div class="button-container">
+        <button onclick="setup()" class="reset-button">Reset</button>
+      </div>
+    </div>
   </div>
 
   <audio id="audio" src="./sounds/pop.mp3"></audio>
